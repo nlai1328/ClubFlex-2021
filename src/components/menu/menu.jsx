@@ -20,8 +20,8 @@ export default function Menubar(){
           <Menu.Item key="filler" >
             Filler
           </Menu.Item>
-          <Menu.Item key="filler2" >
-            Filler
+          <Menu.Item key="settings" >
+            Settings
           </Menu.Item>
         </Menu>
     )
