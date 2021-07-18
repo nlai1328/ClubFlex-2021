@@ -1,4 +1,4 @@
-import { Input, Space, Divider, Row, Col } from "antd";
+import { Input, Space, Divider } from "antd";
 
 const { Search } = Input;
 
