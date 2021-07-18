@@ -1,5 +1,7 @@
 import { Card, Divider, Row, Col } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Members from "./members.json";
+import React from "react";
 
 const content = {
   general: <p>filler</p>,
@@ -33,17 +35,21 @@ export default function Info() {
   return (
     <Row>
       <Col span={12} style={{ paddingLeft: "5%", paddingTop: "2%" }}>
-        <Card
-          title="Name"
-          headStyle={{ textAlign: "left" }}
-          bodyStyle={{ textAlign: "left" }}
-          style={{ width: 400 }}
-          type="inner"
-        >
-          <p>Phone Number :</p>
-          <p>Member Status :</p>
-          <p>Registeration Date :</p>
-        </Card>
+        {Members.map((member) => {
+          return (
+            <Card
+              title={member.name}
+              headStyle={{ textAlign: "left" }}
+              bodyStyle={{ textAlign: "left" }}
+              style={{ width: 400 }}
+              type="inner"
+            >
+              <p>Phone Number : {member.phone}</p>
+              <p>Member Status : {member.memberStatus}</p>
+              <p>Registeration Date {member.registerationDate}:</p>
+            </Card>
+          );
+        })}
       </Col>
       <Col span={12} style={{ paddingRight: "10%", paddingTop: "2%" }}>
         <Card
