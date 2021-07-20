@@ -1,16 +1,16 @@
 [
-    {
-        "id": 123,
-        "memberId": 1,
-        "actionType": "Purchased gold membership",
-        "amount": 120,
-        "date": "1976-01-04T00:00:00.000Z"
-    },
-    {
-        "id": 124,
-        "memberId": 1,
-        "actionType": "Purchased 10 punch pass",
-        "amount": 100,
-        "date": "1976-01-04T00:00:00.000Z"
-    }
+  {
+    "id": 123,
+    "memberId": 1,
+    "actionType": "Purchased gold membership",
+    "amount": 120,
+    "date": "1976-01-04T00:00:00.000Z"
+  },
+  {
+    "id": 124,
+    "memberId": 1,
+    "actionType": "Purchased 10 punch pass",
+    "amount": 100,
+    "date": "1976-01-04T00:00:00.000Z"
+  }
 ]

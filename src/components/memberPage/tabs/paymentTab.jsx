@@ -9,6 +9,7 @@ const columns = [
   {
     title: "Amount",
     dataIndex: "amount",
+    render: (text) => <span>${text}</span>,
   },
   {
     title: "Date",

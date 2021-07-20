@@ -1,19 +1,24 @@
-import { Popconfirm, message } from "antd";
+import { Popconfirm, message, Button, Divider } from "antd";
 
 const confirm = (e) => message.success("Member deleted");
 
 const cancel = (e) => message.error("Cancelled");
 
+const Edit = () => <Button type="link">Edit Member</Button>;
+
 export default function Settingstab() {
   return (
-    <Popconfirm
-      title="Are you sure to delete this member?"
-      onConfirm={confirm}
-      onCancel={cancel}
-      okText="Yes"
-      cancelText="No"
-    >
-      <a href="#">Delete Member</a>
-    </Popconfirm>
+    <div>
+      <Popconfirm
+        title="Are you sure to delete this member?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+      >
+        <a href="#">Delete Member</a>
+      </Popconfirm>
+      <Edit />
+    </div>
   );
 }
