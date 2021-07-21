@@ -1,4 +1,4 @@
-import { Popconfirm, message, Button, Divider } from "antd";
+import { Popconfirm, message, Button } from "antd";
 
 const confirm = (e) => message.success("Member deleted");
 

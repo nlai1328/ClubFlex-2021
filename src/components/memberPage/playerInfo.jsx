@@ -37,6 +37,7 @@ export default function Info() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [members, setMembers] = useState([]);
+  const [mStatus, setMStatus] = useState("Active");
 
   const onTabChange = (key) => {
     console.log(key);
@@ -60,6 +61,10 @@ export default function Info() {
       );
   }, []);
 
+  if (members.memberStatus === false) {
+    setMStatus("Inactive");
+  }
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -77,8 +82,9 @@ export default function Info() {
                 style={{ width: 400 }}
                 type="inner"
               >
+                <p>Membership Number : {members.membershipNum}</p>
                 <p>Phone Number : {members.phone}</p>
-                <p>Member Status : {members.memberStatus}</p>
+                <p>Member Status : {mStatus}</p>
                 <p>
                   Registeration Date :
                   {new Intl.DateTimeFormat("en-GB", {
