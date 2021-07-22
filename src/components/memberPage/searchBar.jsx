@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Input, Space, Divider } from "antd";
-
+import "./searchBar.css";
 const { Search } = Input;
 
-const onSearch = (value) => console.log(value);
+
 
 export default function SearchPlayer() {
   const [members, setMembers] = useState([]);
@@ -27,29 +27,41 @@ export default function SearchPlayer() {
         return members.name.match(regex);
       });
     }
-    console.log(matches);
     setSuggestions(matches);
     setText(text);
+  };
+
+  const onSuggest = (text) => {
+    setText(text);
+    setSuggestions([]);
+    
+    
   };
   return (
     <Divider orientation="left" style={{ paddingTop: 25 }}>
       <Space>
-        <Search
+        <Input
           placeholder="Player name"
-          onSearch={onSearch}
-          enterButton
+         
           size="medium"
           style={{ width: 300 }}
           onChange={(e) => onChange(e.target.value)}
           value={text}
+          type="text"
         />
-        <div>
-          {suggestions &&
-            suggestions.map((suggestion, i) => (
-              <div key={i}>{suggestion.name}</div>
-            ))}
-        </div>
       </Space>
+      <div>
+        {suggestions &&
+          suggestions.map((suggestion, i) => (
+            <div
+              className="suggestion"
+              key={i}
+              onClick={() => onSuggest(suggestions.name)}
+            >
+              {suggestion.name}
+            </div>
+          ))}
+      </div>
     </Divider>
   );
 }

@@ -6,6 +6,7 @@ import Paymenttab from "./tabs/paymentTab";
 import Activitytab from "./tabs/activityTab";
 import Settingstab from "./tabs/settingsTab";
 
+
 const content = {
   membership: <Membershiptab />,
   settings: <Settingstab />,
@@ -34,6 +35,7 @@ const tabsList = [
 
 export default function Info() {
   const [keys, setKeys] = useState("membership");
+  const [show, setShow] = useState(false);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [members, setMembers] = useState([]);
@@ -64,8 +66,9 @@ export default function Info() {
   if (members.memberStatus === false) {
     setMStatus("Inactive");
   }
-
-  if (error) {
+  if (show === false) {
+    return <div></div>;
+  } else if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
