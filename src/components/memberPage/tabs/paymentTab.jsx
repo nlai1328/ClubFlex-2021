@@ -1,5 +1,5 @@
 import { Table } from "antd";
-import data from "./paymentlogs.json";
+import data from "./data/paymentlogs.json"
 
 const columns = [
   {

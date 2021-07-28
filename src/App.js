@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import Head from "./components/header/header.jsx";
 import Menu from "./components/menu/menu.jsx";
 
-import Info from "./components/memberPage/playerInfo.jsx";
+import Info from "./components/memberPage/memberpagecomponents/playerInfo.jsx";
 
 const { Footer, Content } = Layout;
 
@@ -13,10 +13,9 @@ function App() {
       <Head />
       <Menu />
       <Content>
-       
         <Info />
       </Content>
-      <Footer>Footer</Footer>
+      
     </Layout>
   );
 }

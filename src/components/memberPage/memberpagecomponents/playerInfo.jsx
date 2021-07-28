@@ -1,11 +1,12 @@
 import { Card, Row, Col, Input, Space, Divider } from "antd";
 import { useState, useEffect } from "react";
 import React from "react";
-import Membershiptab from "./tabs/membershipTab";
-import Paymenttab from "./tabs/paymentTab";
-import Activitytab from "./tabs/activityTab";
-import Settingstab from "./tabs/settingsTab";
+import Membershiptab from "../tabs/membershipTab";
+import Paymenttab from "../tabs/paymentTab";
+import Activitytab from "../tabs/activityTab";
+import Settingstab from "../tabs/settingsTab";
 import "./searchBar.css";
+import Addplayer from "./addPlayer";
 
 const content = {
   membership: <Membershiptab />,
@@ -79,6 +80,7 @@ export default function SearchPlayer() {
             type="text"
           />
         </Space>
+
         <div>
           {suggestions &&
             suggestions.map((suggestion, i) => (
@@ -91,6 +93,7 @@ export default function SearchPlayer() {
               </div>
             ))}
         </div>
+        <Addplayer />
       </Divider>
       <Info status={show} text={select} />
     </div>
