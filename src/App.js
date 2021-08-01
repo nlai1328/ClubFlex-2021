@@ -2,8 +2,7 @@ import "./App.css";
 import { Layout } from "antd";
 import Head from "./components/header/header.jsx";
 import Menu from "./components/menu/menu.jsx";
-
-import Info from "./components/memberPage/memberpagecomponents/playerInfo.jsx";
+import Info from "./components/memberPage/playerInfo.jsx";
 
 const { Footer, Content } = Layout;
 
