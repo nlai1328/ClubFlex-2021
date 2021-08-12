@@ -93,8 +93,9 @@ export default function SearchPlayer() {
               </div>
             ))}
         </div>
-        <Addplayer />
+        
       </Divider>
+      <Addplayer />
       <Info status={show} text={select} />
     </div>
   );
