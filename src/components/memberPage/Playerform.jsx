@@ -6,7 +6,8 @@ const { Option } = Select;
 function Addplayer() {
   const onFinish = (values) => {
     console.log("Success:", values);
-    axios.post("http://localhost:4000/api/members",values)
+    values.name = values.firstName.concat(values.lastName) 
+    axios.post("http://localhost:4000/members",values)
   };
 
   return (
@@ -48,7 +49,7 @@ function Addplayer() {
         </Form.Item>
         <Form.Item
           label="Phone Number"
-          name="Phone"
+          name="phone"
           rules={[
             {
               required: true,
@@ -59,7 +60,7 @@ function Addplayer() {
           <Input />
         </Form.Item>
         <Form.Item
-          name="memberType"
+          name="membership"
           label="Membership"
           rules={[
             {

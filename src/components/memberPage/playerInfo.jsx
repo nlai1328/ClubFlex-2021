@@ -41,7 +41,7 @@ export default function SearchPlayer() {
   const [suggestions, setSuggestions] = useState([]);
   const [select, setSelect] = useState("");
   useEffect(() => {
-    fetch("http://localhost:4000/api/members")
+    fetch("http://localhost:4000/members")
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
@@ -113,7 +113,7 @@ function Info(props) {
     setKeys(key);
   };
   useEffect(() => {
-    fetch("http://localhost:4000/api/members")
+    fetch("http://localhost:4000/members")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -155,7 +155,7 @@ function Info(props) {
                     style={{ width: 400 }}
                     type="inner"
                   >
-                    <p>Membership Number : {members.membershipNum}</p>
+                    <p>Membership ID : {members._id}</p>
                     <p>Phone Number : {members.phone}</p>
                     <p>Member Status : {mStatus}</p>
                     <p>
