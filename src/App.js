@@ -14,7 +14,6 @@ function App() {
       <Content>
         <Info />
       </Content>
-      
     </Layout>
   );
 }

@@ -11,7 +11,8 @@ function Addplayer() {
   };
 
   return (
-    <Card>
+    <div style={{paddingLeft:"10%",paddingBottom:'2%'}}>
+    <Card style={{width:'50%', paddingTop:'2%',}}>
       <Form
         name="basic"
         labelCol={{
@@ -98,6 +99,7 @@ function Addplayer() {
         </Form.Item>
       </Form>
     </Card>
+    </div>
   );
 }
 

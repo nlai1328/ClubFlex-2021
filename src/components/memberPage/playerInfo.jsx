@@ -1,11 +1,10 @@
-import { Card, Row, Col, Input, Space, Divider } from "antd";
+import { Card, Row, Col, Input, Space, Divider, AutoComplete } from "antd";
 import { useState, useEffect } from "react";
 import React from "react";
 import Membershiptab from "./tabs/membershipTab";
 import Paymenttab from "./tabs/paymentTab";
 import Activitytab from "./tabs/activityTab";
 import Settingstab from "./tabs/settingsTab";
-import "./searchBar.css";
 import Addplayer from "./Playerform";
 
 const content = {
@@ -35,68 +34,51 @@ const tabsList = [
 ];
 
 export default function SearchPlayer() {
-  const [members, setMembers] = useState([]);
-  const [text, setText] = useState("");
+  const [options, setOptions] = useState();
   const [show, setShow] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
-  const [select, setSelect] = useState("");
+  const [text, setText] = useState("");
+
   useEffect(() => {
     fetch("http://localhost:4000/members")
       .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        setMembers(result);
-      });
+      .then(
+        (result) => {
+          console.log(result);
+          const add = result.map((member) => {
+            return { value: member.name };
+          });
+          setOptions(add);
+        },
+
+        (error) => {
+          console.log(error);
+        }
+      );
   }, []);
 
-  const onChange = (text) => {
-    let matches = [];
-    if (text.length > 0) {
-      matches = members.filter((members) => {
-        const regex = new RegExp(`${text}`, "gi");
-        return members.name.match(regex);
-      });
-    }
-    setSuggestions(matches);
-    setText(text);
+  const onSelect = (data) => {
+    console.log("onSelect", data);
+    setShow(true);
+    setText(data);
   };
 
-  const onSuggest = (text) => {
-    setText(text);
-    setShow(true);
-    setSuggestions([]);
-    setSelect(suggestions[0].name);
-  };
   return (
     <div>
       <Divider orientation="left" style={{ paddingTop: 25 }}>
-        <Space>
-          <Input
-            placeholder="Player name"
-            size="medium"
-            style={{ width: 300 }}
-            onChange={(e) => onChange(e.target.value)}
-            value={text}
-            type="text"
-          />
-        </Space>
-
-        <div>
-          {suggestions &&
-            suggestions.map((suggestion, i) => (
-              <div
-                className="suggestion"
-                key={i}
-                onClick={() => onSuggest(suggestions.name)}
-              >
-                {suggestion.name}
-              </div>
-            ))}
-        </div>
-        
+        <AutoComplete
+          options={options}
+          style={{
+            width: 200,
+          }}
+          onSelect={onSelect}
+          placeholder="Player Search"
+          filterOption={(inputValue, option) =>
+            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+          }
+        />
       </Divider>
       <Addplayer />
-      <Info status={show} text={select} />
+      <Info status={show} text={text} />
     </div>
   );
 }
@@ -117,7 +99,6 @@ function Info(props) {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result);
           setIsLoaded(true);
           setMembers(result);
         },
